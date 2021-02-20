@@ -1,30 +1,15 @@
-import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StatusBar, StyleSheet, SafeAreaView, View } from "react-native";
 
-import { ResturantList } from "./src/components/ResturantList/ResturantList";
-import { SearchBox } from "./src/components/SearchBar/SearchBox";
+import { RestaurantsScreen } from "./src/features/resturants/screens/resturantsscreen";
 
-StatusBar.currentHeight === null ? 0 : StatusBar.currentHeight;
+const AUTO = "auto";
 
 export default function App() {
   return (
     <>
-      <SafeAreaView style={styles.siteContainer}>
-        <View style={styles.searchContainer}>
-          <SearchBox />
-        </View>
-        <ResturantList />
-      </SafeAreaView>
-      <ExpoStatusBar style="light" />
+      <RestaurantsScreen />
+      <StatusBar style="auto" />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  siteContainer: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight === null ? 0 : StatusBar.currentHeight,
-  },
-  searchContainer: { padding: 10, backgroundColor: "green" },
-});
