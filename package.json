@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint . --fix --color"
+    "lint": "eslint . --fix --color && pretty-quick --write && git add -A"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "2.x",
