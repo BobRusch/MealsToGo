@@ -1,0 +1,8 @@
+{
+  "*.+(js|jsx)": [
+    "eslint --fix --color",
+    "pretty-quick --staged --write",
+    "git add -A"
+  ],
+  "*.+(json|css|md)": ["pretty-quick --staged --write", "git add -A"]
+}

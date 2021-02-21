@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-// import { Text, StyleSheet } from "react-native";
 import { Card, Button } from "react-native-paper";
 
 const RestaurantCard = styled(Card)`
@@ -42,12 +41,12 @@ const starRating = (rating) => {
 export const RestaurantInfoCard = ({ resturant }) => {
   const {
     name,
-    icon,
+    // icon,
     photos,
-    address,
-    openingHours,
+    // address,
+    // openingHours,
     rating,
-    isClosedTemporarily,
+    // isClosedTemporarily
   } = resturant;
 
   return (

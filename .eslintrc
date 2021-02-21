@@ -1,7 +1,20 @@
 {
-  "extends": "@react-native-community",
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": ["react-app", "plugin:react/recommended", "standard"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
   "rules": {
-    "quotes": [2, "double", { "avoidEscape": true }]
-    "prettier.jsxSingleQuote": false
+    "react/prop-types": ["off"],
+    "react/style-prop-object": ["off"]
   }
 }
