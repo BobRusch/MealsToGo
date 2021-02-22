@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# do this not: lint-staged
 eslint --fix --color && pretty-quick --staged --write && git add -A
