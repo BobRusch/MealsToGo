@@ -1,10 +1,10 @@
 # MealsToGo
 
-## Description:
+### Description:
 
 This app is similar to yelp.
 
-## How to create:
+### How to create:
 
 1. Clone repository
 2. Run:
@@ -19,8 +19,12 @@ yarn install
 yarn add expo eslint pretty-quick husky --global
 ```
 
-[![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](http://standardjs.com)
+## Created with:
 
 <p align="left">
-    <img alt="awesome" src="assets/header_logo.svg" width="125" />
+    <img alt="awesome" src="assets/header_logo.png" width="125" />
 </p><br/>
+
+## Using Javascript Code Styles :
+
+[![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](http://standardjs.com)
