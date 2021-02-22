@@ -21,6 +21,6 @@ yarn add expo eslint pretty-quick husky --global
 
 [![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](http://standardjs.com)
 
-<p align="center">
-    <img alt="awesome" src="assets/header_logo.svg" width="480" />
+<p align="left">
+    <img alt="awesome" src="assets/header_logo.svg" width="125" />
 </p><br/>
