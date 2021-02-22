@@ -1,67 +1,66 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Card, Button } from "react-native-paper";
+import { Text } from "react-native";
+import { Card } from "react-native-paper";
+import { SvgXml } from "react-native-svg";
+
+import star from "../../../../assets/star";
 
 const RestaurantCard = styled(Card)`
-  background-color: white;
-  padding: 16px;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
-  padding: 20px;
-  background-color: white;
+  padding: ${(props) => props.theme.space.sm};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-const RestaurantCardContent = styled(Card.Content)`
-  padding: 20px;
-  background-color: white;
+const Address = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
-const Title = styled.Text`
-  font-size: 20px;
-  color: red;
+const Title = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.ui.primary};
 `;
 
-const Rating = styled.Text`
-  padding-top: 8px;
-  font-size: 14px;
-  color: blue;
+const Info = styled.View`
+  padding: ${(props) => props.theme.space.sm};
 `;
 
-const STAR = "⭐";
+const Rating = styled.View`
+  flex-direction: row;
+  padding-top: ${(props) => props.theme.space.xs};
+  padding-bottom: ${(props) => props.theme.space.xs};
+`;
 
-const starRating = (rating) => {
-  let stars = "";
-  for (let i = 0; i < rating; i++) {
-    stars += STAR;
-  }
-  return stars;
-};
-
-export const RestaurantInfoCard = ({ resturant }) => {
+export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name,
     // icon,
     photos,
-    // address,
+    address,
     // openingHours,
     rating,
     // isClosedTemporarily
-  } = resturant;
+  } = restaurant;
+
+  const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <>
-      <RestaurantCard elevation={5}>
-        <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
-        <RestaurantCardContent>
-          <Title>{name}</Title>
-          <Rating>Rating {starRating(rating)}</Rating>
-        </RestaurantCardContent>
-        <Card.Actions>
-          <Button>Cancel</Button>
-          <Button>Ok</Button>
-        </Card.Actions>
-      </RestaurantCard>
-    </>
+    <RestaurantCard elevation={5}>
+      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <Info>
+        <Title>{name}</Title>
+        <Rating>
+          {ratingArray.map((rate, idx) => (
+            <SvgXml key={rate + idx} xml={star} width={20} height={20} />
+          ))}
+        </Rating>
+        <Address>{address}</Address>
+      </Info>
+    </RestaurantCard>
   );
 };
