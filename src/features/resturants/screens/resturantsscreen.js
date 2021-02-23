@@ -1,21 +1,53 @@
 import React from "react";
 import { Searchbar } from "react-native-paper";
-import { StatusBar, SafeAreaView } from "react-native";
+import { StatusBar, FlatList, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+// import { Item } from "react-native-paper/lib/typescript/components/List/List";
 
-const Testdata = {
-  name: "Golden Needle",
-  icon: "🍴",
-  photos: [
-    "https://www.kohinoor-joy.com/wp-content/uploads/2020/01/indo-chinese-food.jpg",
-  ],
-  address: "123 Any Street",
-  openingHours: "11:30 - 10:00",
-  rating: 4,
-  isClose: false,
-};
+let resturants = [{}];
+
+resturants = [
+  {
+    name: "Golden Needle",
+    icon:
+      "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    photos: [
+      "https://www.kohinoor-joy.com/wp-content/uploads/2020/01/indo-chinese-food.jpg",
+    ],
+    address: "123 Any Street, Sometown, NJ 07111",
+    isOpenNow: true,
+    openingHours: "11:30 - 10:00",
+    rating: 4,
+    isCloaedTemporaaily: true,
+  },
+  {
+    name: "Hunan Kitchen",
+    icon:
+      "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    photos: [
+      "https://www.kohinoor-joy.com/wp-content/uploads/2020/01/indo-chinese-food.jpg",
+    ],
+    address: "123 Any Street, Sometown, NJ 07111",
+    isOpenNow: true,
+    openingHours: "11:30 - 10:00",
+    rating: 4,
+    isCloaedTemporaaily: true,
+  },
+  {
+    name: "Some Restaurant",
+    icon:
+      "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    photos: [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+    ],
+    address: "100 some random street",
+    isOpenNow: true,
+    rating: 4,
+    isClosedTemporarily: true,
+  },
+];
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -26,19 +58,23 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space.md};
 `;
 
-const RestaurantListContainer = styled.View`
-  flex: 1;
-  padding: ${(props) => props.theme.space.md};
-  background-color: ${(props) => props.theme.colors.bg.secondary};
-`;
+const RestaurantList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    padding: 16,
+  },
+})``;
 
 export const RestaurantsScreen = () => (
   <SafeArea>
     <SearchContainer>
       <Searchbar />
     </SearchContainer>
-    <RestaurantListContainer>
-      <RestaurantInfoCard restaurant={Testdata} />
-    </RestaurantListContainer>
+    <RestaurantList
+      data={resturants}
+      renderItem={(restaurant) => (
+        <RestaurantInfoCard restaurant={restaurant} />
+      )}
+      keyExtractor={(item) => item.name}
+    />
   </SafeArea>
 );

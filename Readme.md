@@ -16,7 +16,7 @@ yarn install
 3. Run:
 
 ```
-yarn add expo eslint pretty-quick husky --global
+yarn add expo eslint pretty-quick husky lint-staged --global
 ```
 
 ## Created with:
