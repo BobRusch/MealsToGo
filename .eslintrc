@@ -5,7 +5,12 @@
     "node": true,
     "es2021": true
   },
-  "extends": ["react-app", "plugin:react/recommended", "standard"],
+  "extends": [
+    "react-app",
+    "plugin:react/recommended",
+    "standard",
+    "@react-native-community"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -16,6 +21,7 @@
   "rules": {
     "react/prop-types": ["off"],
     "react/style-prop-object": ["off"],
-    "camelcase": [0, { "properties": "never" }]
+    "camelcase": [0, { "properties": "never" }],
+    "quotes": [2, "double", { "avoidEscape": true }]
   }
 }

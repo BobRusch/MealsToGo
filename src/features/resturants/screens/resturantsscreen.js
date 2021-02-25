@@ -1,16 +1,15 @@
-import React from "react";
-import { Searchbar } from "react-native-paper";
-import { StatusBar, FlatList, SafeAreaView } from "react-native";
+import React, { useContext } from "react";
+import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
+import { View, StatusBar, FlatList, SafeAreaView } from "react-native";
 import styled from "styled-components/native";
 
 import { Spacer } from "../../../components/Spacer/spacer.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utlilty/safe-area.component";
 // import { Item } from "react-native-paper/lib/typescript/components/List/List";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 
-let resturants = [{}];
-
-resturants = [
+let testData = [
   {
     name: "Golden Needle",
     icon:
@@ -18,7 +17,7 @@ resturants = [
     photos: [
       "https://www.kohinoor-joy.com/wp-content/uploads/2020/01/indo-chinese-food.jpg",
     ],
-    address: "123 Any Street, Sometown, NJ 07111",
+    vicinity: "123 Any Street, Sometown, NJ 07111",
     isOpenNow: true,
     openingHours: "11:30 - 10:00",
     rating: 4,
@@ -31,7 +30,7 @@ resturants = [
     photos: [
       "https://www.kohinoor-joy.com/wp-content/uploads/2020/01/indo-chinese-food.jpg",
     ],
-    address: "123 Any Street, Sometown, NJ 07111",
+    vicinity: "123 Any Street, Sometown, NJ 07111",
     isOpenNow: true,
     openingHours: "11:30 - 10:00",
     rating: 4,
@@ -44,7 +43,7 @@ resturants = [
     photos: [
       "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
     ],
-    address: "100 some random street",
+    vicinity: "100 some random street",
     isOpenNow: true,
     rating: 4,
     isClosedTemporarily: true,
@@ -61,19 +60,40 @@ const RestaurantList = styled(FlatList).attrs({
   },
 })``;
 
-export const RestaurantsScreen = () => (
-  <SafeArea>
-    <SearchContainer>
-      <Searchbar />
-    </SearchContainer>
-    <RestaurantList
-      data={resturants}
-      renderItem={({ item }) => (
-        <Spacer position="bottom" size="medium">
-          <RestaurantInfoCard restaurant={item} />
-        </Spacer>
+const LoadingContainer = styled.View`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+`;
+
+const LoadingActivityIndicator = styled(ActivityIndicator)`
+  margin-left: -50px;
+`;
+export const RestaurantsScreen = () => {
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  return (
+    <SafeArea>
+      {isLoading && (
+        <LoadingContainer>
+          <LoadingActivityIndicator
+            size={100}
+            animation={true}
+            color={Colors.purpleA700}
+          />
+        </LoadingContainer>
       )}
-      keyExtractor={(item) => item.name}
-    />
-  </SafeArea>
-);
+      <SearchContainer>
+        <Searchbar />
+      </SearchContainer>
+      <RestaurantList
+        data={restaurants}
+        renderItem={({ item }) => (
+          <Spacer position="bottom" size="medium">
+            <RestaurantInfoCard restaurant={item} />
+          </Spacer>
+        )}
+        keyExtractor={(item) => item.name}
+      />
+    </SafeArea>
+  );
+};
