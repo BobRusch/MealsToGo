@@ -25,7 +25,6 @@ const TAB_ICON = {
 
 const createScreenOptions = ({ route }) => {
   const iconName = TAB_ICON[route.name];
-  console.log("createScreenOptions");
   return {
     tabBarIcon: ({ size, color }) => (
       <Ionicons name={iconName} size={size} color={color} />
@@ -57,10 +56,8 @@ export default function App() {
 
   return (
     <>
-      {console.log("entering App")}
       <ThemeProvider theme={theme}>
         <LocationContextProvider>
-          {console.log("before RestaurantsContextProvider")}
           <RestaurantsContextProvider>
             <NavigationContainer>
               <Tab.Navigator

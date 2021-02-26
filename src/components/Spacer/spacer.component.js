@@ -7,7 +7,7 @@ const sizeVariant = {
   small: "sm",
   medSmall: "ms",
   medium: "md",
-  medlarge: "ml",
+  medLarge: "ml",
   large: "lg",
   xl: "xl",
 };
