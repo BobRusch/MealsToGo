@@ -8,6 +8,7 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 import { SafeArea } from "../../../components/utlilty/safe-area.component";
 // import { Item } from "react-native-paper/lib/typescript/components/List/List";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { Search } from "../components/search.component";
 
 let testData = [
   {
@@ -50,10 +51,6 @@ let testData = [
   },
 ];
 
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space.md};
-`;
-
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
@@ -82,9 +79,7 @@ export const RestaurantsScreen = () => {
           />
         </LoadingContainer>
       )}
-      <SearchContainer>
-        <Searchbar />
-      </SearchContainer>
+      <Search />
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => (
