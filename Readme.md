@@ -25,6 +25,4 @@ yarn add expo eslint pretty-quick husky lint-staged --global
     <img alt="awesome" src="assets/header_logo.png" width="125" />
 </p><br/>
 
-## Using Javascript Code Styles :
-
-[![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](http://standardjs.com)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)

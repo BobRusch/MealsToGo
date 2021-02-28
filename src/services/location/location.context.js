@@ -9,6 +9,7 @@ export const LocationContextProvider = ({ children }) => {
   const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [viewport, setViewport] = useState(null);
 
   const onSearch = (searchKeyword) => {
     setIsLoading(true);
@@ -25,6 +26,7 @@ export const LocationContextProvider = ({ children }) => {
       .then((result) => {
         setIsLoading(false);
         setLocation(result);
+        setViewport(result.viewport);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -40,6 +42,7 @@ export const LocationContextProvider = ({ children }) => {
         location,
         search: onSearch,
         keyword,
+        viewport,
       }}
     >
       {children}
