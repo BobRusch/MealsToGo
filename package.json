@@ -6,7 +6,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint --fix --color --coverage && pretty-quick --write && git add -A"
+    "lint": "eslint --fix --color && pretty-quick --write && git add -A"
   },
   "dependencies": {
     "@expo-google-fonts/lato": "^0.1.0",
