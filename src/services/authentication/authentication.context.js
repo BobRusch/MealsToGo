@@ -7,7 +7,7 @@ export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
   firebase.auth().onAuthStateChanged((usr) => {
@@ -44,7 +44,6 @@ export const AuthenticationContextProvider = ({ children }) => {
       .then((u) => {
         setUser(u);
         setIsLoading(false);
-        setIsAuthenticated(true);
       })
       .catch((e) => {
         setIsLoading(false);
@@ -53,19 +52,24 @@ export const AuthenticationContextProvider = ({ children }) => {
   };
 
   const onLogout = () => {
-    setUser(null);
-    firebase.auth().signOut();
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        setUser(null);
+        setError(null);
+      });
   };
 
   return (
     <AuthenticationContext.Provider
       value={{
+        isAuthenticated: !!user,
         user,
         isLoading,
         error,
         onLogin,
         onRegister,
-        isAuthenticated: !!user,
         onLogout,
       }}
     >
