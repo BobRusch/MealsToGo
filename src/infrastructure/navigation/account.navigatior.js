@@ -1,21 +1,17 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
-import { SafeArea } from "../../components/utlilty/safe-area.component";
+import { createStackNavigator } from "@react-navigation/stack";
+import { AccountScreen } from "../../features/account/screens/account.screen";
+import { LoginScreen } from "../../features/account/screens/login.screen";
+import { RegisterScreen } from "../../features/account/screens/register";
 
-const Tab = createBottomTabNavigator();
-
-const Settings = () => (
-  <SafeArea>
-    <Text>Settings</Text>
-  </SafeArea>
-);
+const Stack = createStackNavigator();
 
 export const AccountNavigator = () => (
-  <SafeArea>
-    <Text>Authorization Screen</Text>
-  </SafeArea>
+  <Stack.Navigator headerMode="none">
+    <Stack.Screen name="Main" component={AccountScreen} />
+    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Register" component={RegisterScreen} />
+  </Stack.Navigator>
 );

@@ -2,7 +2,7 @@
 
 ### Description:
 
-This app is similar to yelp.
+This app is similar to Uber Eats.
 
 ### How to create:
 
