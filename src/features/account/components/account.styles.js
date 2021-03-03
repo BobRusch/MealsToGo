@@ -33,8 +33,10 @@ export const AuthButton = styled(Button).attrs({
 
 export const AuthInput = styled(TextInput).attrs({
   borderWidth: 2,
-  borderRadius: 20,
+  borderRadius: 5,
   borderColor: colors.brand.primary,
+  underlineColor: "rgba(0, 0, 0, 0)",
+  mode: "none",
 })`
   width: 300px;
   background-color: rgba(233, 255, 255, 0.001);

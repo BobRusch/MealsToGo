@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { ActivityIndicator, Colors } from "react-native-paper";
 
 import { Spacer } from "../../../components/Spacer/spacer.component";
 
@@ -14,17 +15,17 @@ import {
 import { Text } from "../../../components/typography/text.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
-export const LoginScreen = ({ navigation }) => {
+export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, error } = useContext(AuthenticationContext);
+  const [repeatedPassword, setRepeatedPassword] = useState("");
+  const { onRegister, isLoading, error } = useContext(AuthenticationContext);
   return (
     <AccountBackground>
       <AccountCover />
       <Title>Meals To Go</Title>
       <AccountContainer>
         <AuthInput
-          underlineColorAndroid="transparent"
           label="E-mail"
           value={email}
           textContentType="emailAddress"
@@ -34,7 +35,6 @@ export const LoginScreen = ({ navigation }) => {
         />
         <Spacer size="large">
           <AuthInput
-            underlineColorAndroid="transparent"
             label="Password"
             value={password}
             textContentType="password"
@@ -44,19 +44,34 @@ export const LoginScreen = ({ navigation }) => {
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
+        <Spacer size="large">
+          <AuthInput
+            label="Confirm Password"
+            value={repeatedPassword}
+            textContentType="password"
+            secureTextEntry
+            autoCapitalize="none"
+            secure
+            onChangeText={(p) => setRepeatedPassword(p)}
+          />
+        </Spacer>
         {error && (
           <ErrorContainer>
             <Text variant="error">{error}</Text>
           </ErrorContainer>
         )}
         <Spacer size="large">
-          <AuthButton
-            icon="lock-open-outline"
-            mode="contained"
-            onPress={() => onLogin(email, password)}
-          >
-            Login
-          </AuthButton>
+          {!isLoading ? (
+            <AuthButton
+              icon="email"
+              mode="contained"
+              onPress={() => onRegister(email, password, repeatedPassword)}
+            >
+              Register
+            </AuthButton>
+          ) : (
+            <ActivityIndicator animating={true} color={Colors.blue300} />
+          )}
         </Spacer>
       </AccountContainer>
       <Spacer size="large">
