@@ -11,6 +11,7 @@ import { Search } from "../components/search.component";
 
 import { FavoritesContext } from "../../../services/favorites/favorites.context";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { RestaurantList } from "../components/resturant-list.styles";
 
 let testData = [
   {
@@ -52,12 +53,6 @@ let testData = [
     isClosedTemporarily: true,
   },
 ];
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 const LoadingContainer = styled.View`
   position: absolute;

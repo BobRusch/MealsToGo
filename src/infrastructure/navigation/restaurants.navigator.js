@@ -7,8 +7,9 @@ import {
 } from "@react-navigation/stack";
 
 import { SafeArea } from "../../components/utlilty/safe-area.component";
-import { RestaurantsScreen } from "../../features/resturants/screens/resturantsscreen";
+import { RestaurantsScreen } from "../../features/resturants/screens/resturants.screen";
 import { RestaurantDetailScreen } from "../../features/resturants/screens/resturant-detail.screen";
+
 const RestaurantStack = createStackNavigator();
 
 export const RestaurantsNavigator = () => {
