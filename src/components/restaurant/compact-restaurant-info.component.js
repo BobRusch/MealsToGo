@@ -4,6 +4,7 @@ import WebView from "react-native-webview";
 import { Platform } from "react-native";
 
 import { Text } from "../typography/text.component";
+import { FadeInView } from "../animations/fade.animation";
 
 const CompactImage = styled.Image`
   border-radius: 10px;
@@ -29,11 +30,13 @@ export const CompactRestaurantInfo = ({ restaurant, isMap = undefined }) => {
   const Image = isAndroid && isMap ? CompactWebview : CompactImage;
 
   return (
-    <Item>
-      <Image source={{ uri: restaurant.photos[0] }} />
-      <Text center variant="caption" numberOfLines={3}>
-        {restaurant.name}
-      </Text>
-    </Item>
+    <FadeInView>
+      <Item>
+        <Image source={{ uri: restaurant.photos[0] }} />
+        <Text center variant="caption" numberOfLines={3}>
+          {restaurant.name}
+        </Text>
+      </Item>
+    </FadeInView>
   );
 };

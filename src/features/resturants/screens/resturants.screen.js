@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
-import { View, StatusBar, FlatList, TouchableOpacity } from "react-native";
+import { ActivityIndicator, Colors } from "react-native-paper";
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
 import { Spacer } from "../../../components/Spacer/spacer.component";
+import { FadeInView } from "../../../components/animations/fade.animation";
 import { FavoritesBar } from "../../../components/favorites/favorites-bar.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utlilty/safe-area.component";
@@ -97,7 +98,9 @@ export const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="medium">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           );

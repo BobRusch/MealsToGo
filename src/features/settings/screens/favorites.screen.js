@@ -8,7 +8,7 @@ import { FavoritesContext } from "../../../services/favorites/favorites.context"
 import { RestaurantList } from "../../resturants/components/resturant-list.styles";
 import { RestaurantInfoCard } from "../../resturants/components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utlilty/safe-area.component";
-
+import { FadeInView } from "../../../components/animations/fade.animation";
 const NoFavoritesArea = styled(SafeArea)`
   align-items: center;
   justify-content: center;
@@ -28,9 +28,9 @@ export const FavoritesScreen = ({ navigation }) => {
                 })
               }
             >
-              <Spacer position="bottom" size="medium">
+              <FadeInView>
                 <RestaurantInfoCard restaurant={item} />
-              </Spacer>
+              </FadeInView>
             </TouchableOpacity>
           );
         }}
