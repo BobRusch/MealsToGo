@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
-import { Spacer } from "../../../components/Spacer/spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 import {
   AccountBackground,

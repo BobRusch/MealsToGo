@@ -1,5 +1,5 @@
 import React from "react";
-import { Spacer } from "../../../components/Spacer/spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import LottieView from "lottie-react-native";
 
 import {

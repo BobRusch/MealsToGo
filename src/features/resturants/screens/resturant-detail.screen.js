@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ScrollView } from "react-native";
 import { List } from "react-native-paper";
 
-import { RestaurantInfoCard } from "../../resturants/components/restaurant-info-card.component";
-import { SafeArea } from "../../../components/utlilty/safe-area.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
-export const RestaurantDetailScreen = ({ route }) => {
+import { SafeArea } from "../../../components/utlilty/safe-area.component";
+import { OrderButton } from "../components/resturant-list.styles";
+import { CartContext } from "../../../services/cart/cart.context";
+
+export const RestaurantDetailScreen = ({ navigation, route }) => {
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
   const [drinksExpanded, setDrinksExpanded] = useState(false);
 
   const { restaurant } = route.params;
+  const { addToCart } = useContext(CartContext);
+
   return (
     <SafeArea>
       <RestaurantInfoCard restaurant={restaurant} />
@@ -23,10 +29,7 @@ export const RestaurantDetailScreen = ({ route }) => {
           onPress={() => setBreakfastExpanded(!breakfastExpanded)}
         >
           <List.Item title="Eggs Benedict" />
-          <List.Item title="Mushroom Swiss Omlet" />
-          <List.Item title="Western Omlet" />
-          <List.Item title="Pork Roll, Egg & Cheese Sandwich" />
-          <List.Item title="Corned Beef Hash & Eggs" />
+          <List.Item title="Classic Breakfast" />
         </List.Accordion>
 
         <List.Accordion
@@ -35,11 +38,9 @@ export const RestaurantDetailScreen = ({ route }) => {
           expanded={lunchExpanded}
           onPress={() => setLunchExpanded(!lunchExpanded)}
         >
-          <List.Item title="Italian Hoagie" />
-          <List.Item title="Hamburger w/ Fries" />
-          <List.Item title="Cheeseburger w/ Fries" />
-          <List.Item title="Philly Cheesesteak w/ Fries" />
-          <List.Item title="Turkey Club Sandwitch" />
+          <List.Item title="Burger w/ Fries" />
+          <List.Item title="Steak Sandwich" />
+          <List.Item title="Mushroom Soup" />
         </List.Accordion>
 
         <List.Accordion
@@ -48,11 +49,9 @@ export const RestaurantDetailScreen = ({ route }) => {
           expanded={dinnerExpanded}
           onPress={() => setDinnerExpanded(!dinnerExpanded)}
         >
-          <List.Item title="American Pot Roast" />
-          <List.Item title="Roast Chicken" />
-          <List.Item title="Lasagne" />
-          <List.Item title="Pork Schnitzle" />
-          <List.Item title="Pecan Crust Salmon" />
+          <List.Item title="Spaghetti Bolognese" />
+          <List.Item title="Veal Cutlet with Chicken Mushroom Rotini" />
+          <List.Item title="Steak Frites" />
         </List.Accordion>
 
         <List.Accordion
@@ -65,9 +64,21 @@ export const RestaurantDetailScreen = ({ route }) => {
           <List.Item title="Tea" />
           <List.Item title="Modelo" />
           <List.Item title="Coke" />
-          <List.Item title="Fants" />
+          <List.Item title="Fanta" />
         </List.Accordion>
       </ScrollView>
+      <Spacer position="bottom" size="large">
+        <OrderButton
+          icon="cash-usd"
+          mode="contained"
+          onPress={() => {
+            addToCart({ item: "special", price: 1299 }, restaurant);
+            navigation.navigate("Checkout");
+          }}
+        >
+          Order Special Only 12.99!
+        </OrderButton>
+      </Spacer>
     </SafeArea>
   );
 };

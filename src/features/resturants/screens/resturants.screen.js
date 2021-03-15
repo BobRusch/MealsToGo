@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
 import { Text } from "../../../components/typography/text.component";
-import { Spacer } from "../../../components/Spacer/spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { FadeInView } from "../../../components/animations/fade.animation";
 import { FavoritesBar } from "../../../components/favorites/favorites-bar.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
@@ -64,7 +64,8 @@ export const RestaurantsScreen = ({ navigation }) => {
                   navigation.navigate("RestaurantDetail", {
                     restaurant: item,
                   })
-                }>
+                }
+              >
                 <Spacer position="bottom" size="large">
                   <FadeInView>
                     <RestaurantInfoCard restaurant={item} />
